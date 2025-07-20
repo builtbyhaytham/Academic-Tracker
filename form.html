@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enter Details – Academic Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fef6e4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 60px;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      width: 90%;
+      max-width: 550px;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #172c4b;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #001858;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .subject-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .subject-row input {
+      flex: 1;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #1976d2;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #1565c0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Enter Your Academic Details</h2>
+
+    <form id="studentForm">
+
+      <label for="class">Class</label>
+      <input type="text" id="class" required>
+
+      <label for="date">Date</label>
+      <input type="date" id="date" required>
+
+      <!-- 6 subjects input -->
+      <label>Subjects & Marks</label>
+      <div class="subject-row">
+        <input type="text" placeholder="Subject 1" id="sub1" required>
+        <input type="number" placeholder="Marks" id="mark1" required>
+      </div>
+      <div class="subject-row">
+        <input type="text" placeholder="Subject 2" id="sub2" required>
+        <input type="number" placeholder="Marks" id="mark2" required>
+      </div>
+      <div class="subject-row">
+        <input type="text" placeholder="Subject 3" id="sub3" required>
+        <input type="number" placeholder="Marks" id="mark3" required>
+      </div>
+      <div class="subject-row">
+        <input type="text" placeholder="Subject 4" id="sub4" required>
+        <input type="number" placeholder="Marks" id="mark4" required>
+      </div>
+      <div class="subject-row">
+        <input type="text" placeholder="Subject 5" id="sub5" required>
+        <input type="number" placeholder="Marks" id="mark5" required>
+      </div>
+      <div class="subject-row">
+        <input type="text" placeholder="Subject 6" id="sub6" required>
+        <input type="number" placeholder="Marks" id="mark6" required>
+      </div>
+
+      <label for="assignmentDue">Assignment Due Date</label>
+      <input type="date" id="assignmentDue" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("studentForm");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Collect subjects & marks
+      const subjects = [];
+      for (let i = 1; i <= 6; i++) {
+        const subject = document.getElementById(`sub${i}`).value.trim();
+        const mark = parseInt(document.getElementById(`mark${i}`).value.trim());
+        if (subject && !isNaN(mark)) {
+          subjects.push({ subject, mark });
+        }
+      }
+
+      // Average marks for dashboard
+      const totalMarks = subjects.reduce((sum, s) => sum + s.mark, 0);
+      const avgMarks = Math.round(totalMarks / subjects.length);
+
+      const data = {
+        class: document.getElementById("class").value,
+        date: document.getElementById("date").value,
+        assignmentDue: document.getElementById("assignmentDue").value,
+        subjects,
+        marks: avgMarks,
+        attendance: Math.floor(60 + Math.random() * 40) // random attendance for now
+      };
+
+      localStorage.setItem("studentData", JSON.stringify(data));
+      window.location.href = "dashboard.html";
+    });
+  </script>
+
+</body>
+</html>

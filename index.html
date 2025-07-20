@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Academic Tracker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1a237e, #1976d2);
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1rem;
+      background-color: #ff9800;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #fb8c00;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <img src="./logo.png" width="150px" alt="Logo">
+  <h1>ACADEMIC TRACKER</h1>
+  <p>Your smart progress partner</p>
+
+  <button onclick="goToNextPage()">Get Started</button>
+
+  <footer>BuiltByHaytham © 2025</footer>
+
+  <script>
+    function goToNextPage() {
+      // Redirect to form page
+      window.location.href = "login.html"; // You will create this next
+    }
+  </script>
+
+</body>
+</html>
