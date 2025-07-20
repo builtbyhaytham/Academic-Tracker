@@ -1,1 +1,1 @@
-# Academic-Tracker
+# Academic Tracker
